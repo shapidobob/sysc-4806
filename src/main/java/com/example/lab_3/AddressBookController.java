@@ -59,6 +59,6 @@ public class AddressBookController {
 
     @RequestMapping("/")
     public @ResponseBody String greeting() {
-        return "Hello, World";
+        return "testing change";
     }
 }
