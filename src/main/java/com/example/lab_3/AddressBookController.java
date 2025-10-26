@@ -1,5 +1,9 @@
 package com.example.lab_3;
 
+import com.example.lab_3.AddressBook;
+import com.example.lab_3.AddressRepository;
+import com.example.lab_3.BuddyInfo;
+import com.example.lab_3.BuddyRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

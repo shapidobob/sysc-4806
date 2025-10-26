@@ -1,9 +1,9 @@
 package com.example.lab_3;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.example.lab_3.AddressBook;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
 
 
 public interface AddressRepository extends CrudRepository<AddressBook, Integer>{

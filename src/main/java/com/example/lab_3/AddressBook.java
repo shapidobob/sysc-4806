@@ -24,9 +24,9 @@ public class AddressBook {
 
     @Id
     @GeneratedValue
-    private int id;
+    public int id;
 
-    private String name;
+    public String name;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BuddyInfo> buddies;
