@@ -10,10 +10,12 @@ import java.util.Optional;
 public class AddressBookController {
 
     private final AddressRepository addressBookRepository;
+    private final BuddyRepository buddyRepository;
 
     // Constructor-based dependency injection
-    public AddressBookController(AddressRepository addressBookRepository) {
+    public AddressBookController(AddressRepository addressBookRepository, BuddyRepository buddyRepository) {
         this.addressBookRepository = addressBookRepository;
+        this.buddyRepository = buddyRepository;
     }
 
     // List all address books
@@ -47,18 +49,23 @@ public class AddressBookController {
     // Add a buddy to an address book
     @PostMapping("/addressbook/new")
     public String addBuddy(@RequestParam Long addressBookId, @RequestParam String name, @RequestParam String phoneNumber) {
+        System.out.println(addressBookId);
+        System.out.println(name);
+        System.out.println(phoneNumber);
         Optional<AddressBook> optionalAddressBook = addressBookRepository.findById(addressBookId);
         if (optionalAddressBook.isPresent()) {
             AddressBook addressBook = optionalAddressBook.get();
             BuddyInfo buddyInfo = new BuddyInfo(name, phoneNumber);
+            buddyInfo.setBook(addressBook);
             addressBook.addBuddy(buddyInfo); // Add buddy to the address book
             addressBookRepository.save(addressBook); // Save the updated address book
         }
+        System.out.println(addressBookRepository.findById(addressBookId).get().getBuddies());
         return "redirect:/addressbook?id=" + addressBookId; // Redirect to the specific address book
     }
 
     @RequestMapping("/")
     public @ResponseBody String greeting() {
-        return "testing change";
+        return "<a href=\"/addressbooks\"> to Address Books</a>"; // Redirect back to address books page
     }
 }
