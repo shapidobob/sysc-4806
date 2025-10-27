@@ -68,8 +68,8 @@ public class AddressBookController {
         return "redirect:/addressbook?id=" + addressBookId; // Redirect to the specific address book
     }
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public @ResponseBody String greeting() {
         return "<a href=\"/addressbooks\"> to Address Books</a>"; // Redirect back to address books page
-    }
+    }*/
 }
